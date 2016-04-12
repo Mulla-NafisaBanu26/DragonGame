@@ -59,10 +59,32 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\audio\engine.mp3" />
+    <Content Include="Assets\audio\thunder.mp3" />
+    <Content Include="Assets\audio\yay.mp3" />
+    <Content Include="Assets\fonts\dock51-webfont.svg" />
+    <Content Include="Assets\images\cloud - Copy %282%29.png" />
+    <Content Include="Assets\images\cloud - Copy.png" />
+    <Content Include="Assets\images\cloud.png" />
+    <Content Include="Assets\images\EXIT.png" />
+    <Content Include="Assets\images\instr.png" />
+    <Content Include="Assets\images\island.png" />
+    <Content Include="Assets\images\ocean.gif" />
+    <Content Include="Assets\images\plane.png" />
+    <Content Include="Assets\images\RestartButton.png" />
     <Content Include="Scripts\config\config.js.map" />
     <Content Include="Scripts\core\game.js.map" />
     <Content Include="Scripts\core\_reference.js.map" />
     <Content Include="Scripts\lib\jquery-2.1.4.min.map" />
+    <Content Include="Assets\fonts\dock51-webfont.eot" />
+    <Content Include="Assets\fonts\dock51-webfont.ttf" />
+    <Content Include="Assets\fonts\dock51-webfont.woff" />
+    <Content Include="Assets\fonts\dock51-webfont.woff2" />
+    <Content Include="Assets\fonts\Dock51.ttf" />
+    <Content Include="Assets\audio\{engine.ogg" />
+    <Content Include="Assets\audio\{thunder.ogg" />
+    <Content Include="Assets\audio\{yay.ogg" />
+    <Content Include="Assets\images\mailpilot.tps" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -72,12 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\images\BackButton.png" />
-    <Content Include="Assets\images\IntroCave.png" />
-    <Content Include="Assets\images\LeftCave.png" />
-    <Content Include="Assets\images\LeftCaveButton.png" />
     <Content Include="Assets\images\NextButton.png" />
-    <Content Include="Assets\images\RightCave.png" />
-    <Content Include="Assets\images\RightCaveButton.png" />
     <Content Include="Assets\images\StartButton.png" />
     <Content Include="Assets\images\StartOverButton.png" />
     <Content Include="Content\game.css" />

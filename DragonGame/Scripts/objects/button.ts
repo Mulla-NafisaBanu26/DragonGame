@@ -4,16 +4,18 @@
         width: number;
         height: number;
         //CONSTRUCTOR
-        constructor(pathString:string, x:number, y: number) {
+        constructor(pathString: string, x: number, y: number, centered: boolean) {
             super(assets.getResult(pathString));
             this.x = x;
-            this.y = y; 
+            this.y = y;
 
             this.width = 150;
             this.height = 50;
 
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
+            if (centered) {
+                this.regX = this.width * 0.5;
+                this.regY = this.height * 0.5;
+            }
 
             this.on("mouseover", this.overButton, this);
             this.on("mouseout", this.outButton, this);

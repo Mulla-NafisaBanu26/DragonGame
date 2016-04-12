@@ -9,21 +9,28 @@ var stats: Stats;
 var currentScene: objects.Scene;
 var scene: number;
 
+var livesValue: number;
+var scoreValue: number;
+var highScoreValue: number = 0;
+
 // Game Scenes
-var intro: scenes.Intro;
-var leftCave: scenes.LeftCave;
-var rightCave: scenes.RightCave;
+var menu: scenes.Menu;
+var play: scenes.Play;
+var end: scenes.End;
+var SL2:scenes.SL2;
 
 var assetData:objects.Asset[] = [
-    {id: "BackButton", src:"../../Assets/images/BackButton.png"},
-    {id: "IntroCave", src:"../../Assets/images/IntroCave.png"},
-    {id: "LeftCave", src:"../../Assets/images/LeftCave.png"},
-    {id: "LeftCaveButton", src:"../../Assets/images/LeftCaveButton.png"},
-    {id: "Nextbutton", src:"../../Assets/images/Nextbutton.png"},
-    {id: "RightCave", src:"../../Assets/images/RightCave.png"},
-    {id: "RightCaveButton", src:"../../Assets/images/RightCaveButton.png"},
+    // Add your Assets here
     {id: "StartButton", src:"../../Assets/images/StartButton.png"},
-    {id: "StartOverButton", src:"../../Assets/images/StartOverButton.png"}
+    {id: "RestartButton", src:"../../Assets/images/RestartButton.png"},
+    {id: "BackButton", src:"../../Assets/images/BackButton.png"},
+    {id: "ocean", src:"../../Assets/images/ocean.gif"},
+    {id: "plane", src:"../../Assets/images/plane.png"},
+    {id: "island", src:"../../Assets/images/island.png"},
+    {id: "cloud", src:"../../Assets/images/cloud.png"},
+    {id: "engine", src:"../../Assets/audio/engine.ogg"},
+    {id: "yay", src:"../../Assets/audio/yay.ogg"},
+    {id: "thunder", src:"../../Assets/audio/thunder.ogg"}
 ];
 
 function preload() {
@@ -53,7 +60,7 @@ function init(): void {
     setupStats(); 
     
     // set initial scene
-    scene = config.Scene.INTRO;
+    scene = config.Scene.MENU;
     changeScene();
 }
 
@@ -87,28 +94,37 @@ function changeScene(): void {
     
     // Launch various scenes
     switch (scene) {
-        case config.Scene.INTRO:
+        case config.Scene.MENU:
             // show the MENU scene
             stage.removeAllChildren();
-            intro = new scenes.Intro();
-            currentScene = intro;
-            console.log("Starting INTRO Scene");
+            menu = new scenes.Menu();
+            currentScene = menu;
+            console.log("Starting MENU Scene");
             break;
-        case config.Scene.LEFT_CAVE:
+        case config.Scene.PLAY:
             // show the PLAY scene
             stage.removeAllChildren();
-            leftCave = new scenes.LeftCave();
-            currentScene = leftCave;
-            console.log("Starting LEFT_CAVE Scene");
+            play = new scenes.Play();
+            currentScene = play;
+            console.log("Starting PLAY Scene");
             break;
-        case config.Scene.RIGHT_CAVE:
-            // show the game OVER scene
+        case config.Scene.END:
+            // show the END scene
             stage.removeAllChildren();
-            rightCave = new scenes.RightCave();
-            currentScene = rightCave;
-            console.log("Starting RIGHT_CAVE Scene");
+            end = new scenes.End();
+            currentScene = end;
+            console.log("Starting END Scene");
+            break;
+
+			  case config.Scene.SL2:
+             stage.removeAllChildren();
+            SL2 = new scenes.SL2();
+            currentScene = SL2;
+            console.log("Starting Second Level");
             break;
     }
 
     console.log(currentScene.numChildren);
 }
+
+window.onload = preload;

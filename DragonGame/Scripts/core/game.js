@@ -6,20 +6,32 @@ var stage;
 var stats;
 var currentScene;
 var scene;
+var livesValue;
+var scoreValue;
+var highScoreValue = 0;
 // Game Scenes
-var intro;
-var leftCave;
-var rightCave;
+var menu;
+var play;
+var end;
+var _SL2;
+var _SL3;
+var _INSTR;
+var _NEXTLEVEL;
 var assetData = [
-    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
-    { id: "IntroCave", src: "../../Assets/images/IntroCave.png" },
-    { id: "LeftCave", src: "../../Assets/images/LeftCave.png" },
-    { id: "LeftCaveButton", src: "../../Assets/images/LeftCaveButton.png" },
-    { id: "Nextbutton", src: "../../Assets/images/Nextbutton.png" },
-    { id: "RightCave", src: "../../Assets/images/RightCave.png" },
-    { id: "RightCaveButton", src: "../../Assets/images/RightCaveButton.png" },
+    // Add your Assets here
     { id: "StartButton", src: "../../Assets/images/StartButton.png" },
-    { id: "StartOverButton", src: "../../Assets/images/StartOverButton.png" }
+      { id: "instr", src: "../../Assets/images/instr.png" },
+        { id: "Exit", src: "../../Assets/images/Exit.png" },
+    { id: "RestartButton", src: "../../Assets/images/RestartButton.png" },
+    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
+     { id: "NextButton", src: "../../Assets/images/NextButton.png" },
+    { id: "ocean", src: "../../Assets/images/ocean.gif" },
+    { id: "plane", src: "../../Assets/images/plane.png" },
+    { id: "island", src: "../../Assets/images/island.png" },
+    { id: "cloud", src: "../../Assets/images/cloud.png" },
+    { id: "engine", src: "../../Assets/audio/engine.mp3" },
+    { id: "yay", src: "../../Assets/audio/yay.mp3" },
+    { id: "thunder", src: "../../Assets/audio/thunder.mp3" }
 ];
 function preload() {
     assets = new createjs.LoadQueue();
@@ -41,7 +53,7 @@ function init() {
     // sets up our stats counting workflow
     setupStats();
     // set initial scene
-    scene = config.Scene.INTRO;
+    scene = config.Scene.MENU;
     changeScene();
 }
 // Main Game Loop function that handles what happens each "tick" or frame
@@ -68,28 +80,67 @@ function setupStats() {
 function changeScene() {
     // Launch various scenes
     switch (scene) {
-        case config.Scene.INTRO:
+        case config.Scene.MENU:
             // show the MENU scene
             stage.removeAllChildren();
-            intro = new scenes.Intro();
-            currentScene = intro;
-            console.log("Starting INTRO Scene");
+            menu = new scenes.Menu();
+            currentScene = menu;
+            console.log("Starting MENU Scene");
             break;
-        case config.Scene.LEFT_CAVE:
+        case config.Scene.PLAY:
             // show the PLAY scene
             stage.removeAllChildren();
-            leftCave = new scenes.LeftCave();
-            currentScene = leftCave;
-            console.log("Starting LEFT_CAVE Scene");
+            play = new scenes.Play();
+            currentScene = play;
+            console.log("Starting PLAY Scene");
             break;
-        case config.Scene.RIGHT_CAVE:
-            // show the game OVER scene
+        case config.Scene.END:
+            // show the END scene
             stage.removeAllChildren();
-            rightCave = new scenes.RightCave();
-            currentScene = rightCave;
-            console.log("Starting RIGHT_CAVE Scene");
+            end = new scenes.End();
+            currentScene = end;
+            console.log("Starting END Scene");
             break;
+        case config.Scene.SL2:
+            // show the END scene
+            stage.removeAllChildren();
+            _SL2 = new scenes.SL2();
+            currentScene = _SL2;
+            console.log("Starting Second Level");
+            break;
+
+        case config.Scene.SL3:
+            // show the END scene
+            stage.removeAllChildren();
+            _SL3 = new scenes.SL3();
+            currentScene = _SL3;
+            console.log("Starting Third Level");
+            break;
+
+        case config.Scene.INSTR:
+            // show the END scene
+            stage.removeAllChildren();
+            _INSTR = new scenes.INST();
+            currentScene = _INSTR;
+            console.log("Starting Instr");
+            break;
+
+        case config.Scene.NEXTLEVEL:
+            // show the END scene
+            stage.removeAllChildren();
+            _NEXTLEVEL = new scenes.nextlevel();
+            currentScene = _NEXTLEVEL;
+            console.log("Starting Instr");
+            break;
+
+        case config.Scene.EXIT:
+            // show the END scene
+            stage.removeAllChildren();
+            break;
+
     }
     console.log(currentScene.numChildren);
 }
+window.onload = preload;
+
 //# sourceMappingURL=game.js.map
